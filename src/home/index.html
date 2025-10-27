@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O título desta página é "Home" -->
+    <title>LAU & MIAU - Adoção de Animais (Home)</title>
+    
+    <!-- Importação do Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importação da fonte Outfit do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Configuração de Cores e Fontes do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'], // Fonte principal é Outfit
+                    },
+                    colors: {
+                        'brand-orange': {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdbf80',
+                            400: '#fb923c',
+                            500: '#f97316', // Cor principal (laranja)
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        },
+                        'brand-pink': {
+                            500: '#ec4899', // Cor de destaque (rosa)
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Estilos CSS personalizados -->
+    <style>
+        /* Estilo para o botão de favoritar ativo */
+        .favorite-btn.favorited svg {
+            fill: #ef4444; /* red-500 */
+            stroke: #ef4444; /* red-500 */
+        }
+    </style>
+</head>
+<body class="bg-white font-sans antialiased text-gray-800">
+
+    <!-- ========== Cabeçalho (Header) ========== -->
+    <header class="sticky top-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex-shrink-0 flex items-center" title="Página Inicial">
+                    <h1 class="text-3xl font-extrabold tracking-tight">
+                        <span class="text-brand-orange-500">LAU</span>
+                        <span class="text-brand-pink-500">&</span>
+                        <span class="text-brand-orange-500">MIAU</span>
+                    </h1>
+                </a>
+                
+                <!-- Links de Navegação (Desktop) - Home está ativa -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-2">
+                    <a href="#" class="bg-brand-orange-100 text-brand-orange-600 inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-colors">
+                        Home
+                    </a>
+                    <a href="animais.html" class="text-gray-600 hover:bg-gray-100 inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-colors">
+                        Animais
+                    </a>
+                    <a href="sobre-nos.html" class="text-gray-600 hover:bg-gray-100 inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold transition-colors">
+                        Sobre nós
+                    </a>
+                </div>
+                
+                <!-- Botão Admin -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center bg-brand-orange-50 text-brand-orange-600 hover:bg-brand-orange-100 rounded-full px-4 py-2 text-sm font-semibold transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                        </svg>
+                        Admin
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========== Conteúdo Principal (Main) ========== -->
+    <main>
+        
+        <!-- --- Seção Hero (da primeira tela) --- -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+            <div class="relative bg-gray-900 rounded-3xl overflow-hidden">
+                <!-- Imagem de fundo (placeholder) -->
+                <img src="https://placehold.co/1200x450/997d64/FFF?text=[Imagem+de+um+gatinho]" 
+                     alt="[Imagem de um gatinho fofo deitado em um cobertor rosa]" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-80">
+                
+                <!-- Overlay escuro para legibilidade -->
+                <div class="absolute inset-0 bg-black/30"></div>
+                
+                <!-- Conteúdo do Hero -->
+                <div class="relative max-w-lg p-12 sm:p-16 lg:p-24 text-white">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                        Ajude quem precisa de um lar!
+                    </h2>
+                    <a href="#pets" class="mt-8 inline-block bg-brand-orange-500 hover:bg-brand-orange-600 text-white rounded-full px-8 py-3 text-lg font-semibold transition-colors shadow-lg">
+                        Quero adotar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- Seção de Filtros e Grade de Pets (da primeira tela) --- -->
+        <section id="pets" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+            
+            <!-- Filtros de Categoria (com "Todos") -->
+            <div>
+                <h3 class="text-xl font-bold text-gray-900">Categorias</h3>
+                <div id="filter-buttons" class="flex items-center space-x-3 mt-4">
+                    <!-- Botão Gatos (Ativo por padrão) -->
+                    <button data-filter="gato" class="filter-btn active flex items-center bg-brand-orange-100 text-brand-orange-600 rounded-full px-5 py-2 text-sm font-semibold transition-colors">
+                        <svg class="w-5 h-5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"></path></svg>
+                        Gatos
+                    </button>
+                    <!-- Botão Cães -->
+                    <button data-filter="cao" class="filter-btn flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full px-5 py-2 text-sm font-semibold transition-colors">
+                        <svg class="w-5 h-5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m0 0a2.5 2.5 0 100 5 2.5 2.5 0 000-5zm0 0a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.75V6.253"></path></svg>
+                        Cães
+                    </button>
+                    <!-- Botão Todos (presente na Home) -->
+                    <button data-filter="todos" class="filter-btn flex items-center bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-full px-5 py-2 text-sm font-semibold transition-colors">
+                        <svg class="w-5 h-5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 12h4m-2-2v4"></path></svg>
+                        Todos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Título da Grade -->
+            <div class="flex justify-between items-baseline mt-10 mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Adotar pet</h3>
+                <a href="animais.html" class="text-sm font-semibold text-brand-orange-500 hover:text-brand-orange-600">
+                    Ver todos
+                </a>
+            </div>
+
+            <!-- Grade de Pets (6 colunas, como no primeiro design) -->
+            <div id="pet-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                
+                <!-- Pet Card 1 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/d1c7c4/555?text=Preciosa" alt="[Foto da gatinha Preciosa]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Preciosa</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM5.5 9.5a.5.5 0 01.5-.5h2.5V6.5a.5.5 0 011 0v2.5h2.5a.5.5 0 010 1H9.5v2.5a.5.5 0 01-1 0V10.5H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>
+                            Fêmea
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 2 (Cão) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="cao">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/aaa/555?text=Renê" alt="[Foto do cão Renê]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Renê</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 3 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/a3b1c6/555?text=Bonitão" alt="[Foto do gato Bonitão]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Bonitão</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 4 (Cão) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="cao">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/e0c9a6/555?text=Doguinho" alt="[Foto do cão Doguinho]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Doguinho</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Pet Card 5 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/f0eade/555?text=Bebezinho" alt="[Foto do gato Bebezinho]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Bebezinho</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 6 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/f0f0f0/555?text=Irmães" alt="[Foto das gatas Irmães]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Irmães</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM5.5 9.5a.5.5 0 01.5-.5h2.5V6.5a.5.5 0 011 0v2.5h2.5a.5.5 0 010 1H9.5v2.5a.5.5 0 01-1 0V10.5H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>
+                            Fêmea
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 7 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/f5f5dc/555?text=Charmosa" alt="[Foto da gata Charmosa]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Charmosa</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM5.5 9.5a.5.5 0 01.5-.5h2.5V6.5a.5.5 0 011 0v2.5h2.5a.5.5 0 010 1H9.5v2.5a.5.5 0 01-1 0V10.5H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>
+                            Fêmea
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 8 (Cão) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="cao">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/333/eee?text=Banquela" alt="[Foto do cão Banquela]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Banquela</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 9 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/eee/555?text=Princesa" alt="[Foto da gata Princesa]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Princesa</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM5.5 9.5a.5.5 0 01.5-.5h2.5V6.5a.5.5 0 011 0v2.5h2.5a.5.5 0 010 1H9.5v2.5a.5.5 0 01-1 0V10.5H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>
+                            Fêmea
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 10 (Cão) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="cao">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/fdf4e3/555?text=Bebe" alt="[Foto do cão Bebe]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Bebe</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-pink-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM5.5 9.5a.5.5 0 01.5-.5h2.5V6.5a.5.5 0 011 0v2.5h2.5a.5.5 0 010 1H9.5v2.5a.5.5 0 01-1 0V10.5H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"></path></svg>
+                            Fêmea
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 11 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/ffcc99/555?text=Fofuxo" alt="[Foto do gato Fofuxo]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                        <!-- A Tag "PROMO" não está na home, apenas na pág. animais -->
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Fofuxo</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pet Card 12 (Gato) -->
+                <article class="pet-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1" data-category="gato">
+                    <div class="relative">
+                        <img src="https://placehold.co/300x300/f3e5ab/555?text=Cinzinho" alt="[Foto do gato Cinzinho]" class="w-full h-40 sm:h-48 object-cover">
+                        <button class="favorite-btn absolute top-2 right-2 bg-white/80 backdrop-blur-sm rounded-full p-1.5 transition-colors hover:bg-white">
+                            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 20.364l-7.682-7.682a4.5 4.5 0 010-6.364z"></path></svg>
+                        </button>
+                    </div>
+                    <div class="p-4 relative">
+                        <h4 class="text-lg font-bold text-gray-900 truncate">Cinzinho</h4>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.5 5.5a.5.5 0 00-1 0v2.5H6a.5.5 0 000 1h2.5v2.5a.5.5 0 001 0V9h2.5a.5.5 0 000-1H9.5V5.5z" clip-rule="evenodd"></path></svg>
+                            Macho
+                        </div>
+                        <div class="flex items-center text-sm text-gray-500 mt-1">
+                            <svg class="w-4 h-4 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                            Foz do Iguaçu, Centro
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== Rodapé (Footer) ========== -->
+    <!-- Este rodapé é o design ATUALIZADO (da pág. animais) para manter a consistência -->
+    <footer class="bg-brand-orange-50 mt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <!-- Seção Superior do Rodapé (Links e Contato) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Coluna 1: Sobre -->
+                <div>
+                    <a href="index.html" class="flex-shrink-0 flex items-center" title="Página Inicial">
+                        <h1 class="text-3xl font-extrabold tracking-tight">
+                            <span class="text-brand-orange-500">LAU</span>
+                            <span class="text-brand-pink-500">&</span>
+                            <span class="text-brand-orange-500">MIAU</span>
+                        </h1>
+                    </a>
+                    <p class="mt-4 text-gray-600 text-sm leading-relaxed">
+                        Conectando corações e criando famílias através da adoção responsável de pets. Nosso objetivo é dar uma segunda chance para animais que precisam de um lar cheio de amor.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-500 hover:text-brand-orange-500">
+                            <span class="sr-only">WhatsApp</span>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.76.46 3.43 1.29 4.9l-1.4 5.02 5.13-1.37c1.41.8 3.02 1.25 4.7 1.25 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zM12.04 20.15c-1.48 0-2.91-.39-4.14-1.12l-.3-.18-3.07.82.84-3.02-.2-.31c-.8-1.26-1.22-2.74-1.22-4.27 0-4.5 3.65-8.15 8.15-8.15 4.5 0 8.15 3.65 8.15 8.15 0 4.5-3.65 8.15-8.15 8.15zM17.3 14.25c-.28-.14-1.65-.81-1.9-.91-.25-.1-.43-.14-.61.14-.18.28-.72.91-.88 1.1-.16.18-.32.21-.6.07-.28-.14-1.18-.44-2.25-1.39-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.48.14-.16.18-.28.28-.46.09-.18.05-.37-.02-.51s-.61-1.48-.84-2.02c-.23-.54-.46-.47-.61-.47-.14 0-.32-.05-.5-.05-.18 0-.46.07-.7.35-.24.28-.91.88-1.1 2.15-.07.35-.07.68 0 1.02.1.34.18.68.28 1.02.57 1.76 1.39 3.2 2.62 4.35 1.48 1.32 2.72 2.08 4.14 2.56.32.1.6.17.85.21.5.1.95.07 1.32-.19.42-.3.72-.88.88-1.65.16-.77.16-1.43.11-1.57-.05-.14-.23-.21-.5-.35z"></path></svg>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-brand-orange-500">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.141 0-3.499.011-4.717.069-2.705.123-3.968 1.383-4.09 4.09-.058 1.218-.069 1.575-.069 4.717s.011 3.499.069 4.717c.123 2.705 1.383 3.968 4.09 4.09 1.218.058 1.575.069 4.717.069s3.499-.011 4.717-.069c2.705-.123 3.968-1.383 4.09-4.09.058-1.218.069-1.575.069-4.717s-.011-3.499-.069-4.717c-.123-2.705-1.383-3.968-4.09-4.09C15.499 3.614 15.141 3.604 12 3.604zm0 3.082c-3.203 0-5.717 2.514-5.717 5.717s2.514 5.717 5.717 5.717 5.717-2.514 5.717-5.717-2.514-5.717-5.717-5.717zm0 9.491c-2.083 0-3.774-1.691-3.774-3.774s1.691-3.774 3.774-3.774 3.774 1.691 3.774 3.774-1.691 3.774-3.774 3.774zm4.192-9.92c-.883 0-1.598.715-1.598 1.598s.715 1.598 1.598 1.598 1.598-.715 1.598-1.598-.715-1.598-1.598-1.598z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Links Úteis -->
+                <div>
+                    <h5 class="text-lg font-bold text-gray-900 mb-4">Links Úteis</h5>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm text-gray-600 hover:text-brand-orange-500 hover:underline">Início</a></li>
+                        <li><a href="animais.html" class="text-sm text-gray-600 hover:text-brand-orange-500 hover:underline">Galeria de Pets</a></li>
+                        <li><a href="sobre-nos.html" class="text-sm text-gray-600 hover:text-brand-orange-500 hover:underline">Sobre Nós</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-brand-orange-500 hover:underline">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-sm text-gray-600 hover:text-brand-orange-500 hover:underline">Termos de uso</a></li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Contato (Atualizado) -->
+                <div>
+                    <h5 class="text-lg font-bold text-gray-900 mb-4">Contato</h5>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-sm text-gray-600">
+                            <svg class="w-5 h-5 mr-3 text-brand-orange-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                            (45) 99819-0824
+                        </li>
+                        <li class="flex items-center text-sm text-gray-600">
+                            <svg class="w-5 h-5 mr-3 text-brand-orange-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 11.884l7.997-6M2 18h16a1 1 0 001-1V3a1 1 0 00-1-1H2a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>
+                            lauvanda@gmail.com
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 4: Newsletter (Atualizado) -->
+                <div class="lg:col-span-1 md:col-span-2">
+                     <h5 class="text-lg font-bold text-gray-900 mb-4">Receba novidades sobre adoções</h5>
+                    <p class="text-sm text-gray-600 mb-4">
+                        Seja o primeiro a saber sobre os pets disponíveis e ajudar a encontrar um novo lar!
+                    </p>
+                    <form action="#" method="POST" class="flex w-full max-w-md">
+                        <label for="email-address" class="sr-only">Email</label>
+                        <input type="email" name="email-address" id="email-address" autocomplete="email" required 
+                               class="flex-1 min-w-0 block w-full px-4 py-2.5 rounded-l-full border-gray-300 focus:border-brand-orange-500 focus:ring-brand-orange-500 text-sm" 
+                               placeholder="seumail@gmail.com">
+                        <button type="submit" 
+                                class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent rounded-r-full shadow-sm text-sm font-semibold text-white bg-brand-orange-500 hover:bg-brand-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-orange-500">
+                            <svg class="w-4 h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+                            Inscrever
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Seção Inferior do Rodapé (Copyright) -->
+            <div class="mt-12 pt-8 border-t border-brand-orange-100 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
+                <p class="order-2 sm:order-1 mt-4 sm:mt-0">&copy; 2025 LAU MIAU. Todos os direitos reservados</p>
+                <p class="order-1 sm:order-2">Desenvolvido por <a href="#" class="font-medium hover:text-brand-orange-500">Lual Tecnologia</a>.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ========== JavaScript ========== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- Funcionalidade dos Filtros de Categoria ---
+            const filterContainer = document.getElementById('filter-buttons');
+            const petGrid = document.getElementById('pet-grid');
+            const petCards = petGrid.querySelectorAll('.pet-card');
+            
+            if (filterContainer) {
+                filterContainer.addEventListener('click', function (e) {
+                    const clickedButton = e.target.closest('button[data-filter]');
+                    if (!clickedButton) return;
+                    const filterValue = clickedButton.dataset.filter;
+                    
+                    filterContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active', 'bg-brand-orange-100', 'text-brand-orange-600');
+                        btn.classList.add('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
+                    });
+                    
+                    clickedButton.classList.add('active', 'bg-brand-orange-100', 'text-brand-orange-600');
+                    clickedButton.classList.remove('bg-gray-100', 'text-gray-600', 'hover:bg-gray-200');
+
+                    petCards.forEach(card => {
+                        const cardCategory = card.dataset.category;
+                        if (filterValue === 'todos' || filterValue === cardCategory) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            // --- Funcionalidade do Botão de Favoritar ---
+            petGrid.addEventListener('click', function (e) {
+                const favoriteButton = e.target.closest('.favorite-btn');
+                if (favoriteButton) {
+                    favoriteButton.classList.toggle('favorited');
+                }
+            });
+
+            // --- Aciona o filtro 'gato' por padrão ao carregar a página ---
+            const defaultFilterButton = document.querySelector('button[data-filter="gato"]');
+            if (defaultFilterButton) {
+                defaultFilterButton.click();
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+
