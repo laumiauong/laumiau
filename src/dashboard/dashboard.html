@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAU MIAU - Dashboard Admin</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': 'var(--primary-color)',
+                        'accent': 'var(--accent-color)',
+                        'card': 'var(--card-color)',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Header/Navegação Principal -->
+        <header class="bg-card shadow-sm sticky top-0 z-10">
+            <nav class="flex items-center justify-between p-4 max-w-7xl mx-auto">
+                <a href="#" class="flex items-center space-x-2 text-xl font-extrabold text-primary">
+                    <span class="text-3xl" role="img" aria-label="Pata de Gato e Cachorro">🐾</span>
+                    <span>LAU MIAU</span>
+                </a>
+
+                <ul id="admin-nav" class="hidden md:flex space-x-4">
+                    <li><a href="#" data-page="dashboard" class="nav-link active border-b-2 py-2 px-3 transition duration-150 font-medium border-primary text-primary">Dashboard</a></li>
+                    <li><a href="#" data-page="animais" class="nav-link border-b-2 py-2 px-3 transition duration-150 font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700">Animais</a></li>
+                    <li><a href="#" data-page="adotantes" class="nav-link border-b-2 py-2 px-3 transition duration-150 font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700">Adotantes</a></li>
+                </ul>
+
+                <div class="flex items-center space-x-4">
+                    <button class="flex items-center text-gray-500 hover:text-primary transition duration-150" aria-label="Sair">
+                        <span data-lucide="log-out" class="w-5 h-5 mr-1"></span>
+                        <span class="hidden sm:inline">Sair</span>
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden text-gray-600 p-2 rounded hover:bg-gray-100" aria-label="Abrir Menu">
+                        <span data-lucide="menu" class="w-6 h-6"></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="md:hidden bg-card shadow-md absolute w-full z-10 hidden">
+            <ul class="flex flex-col p-4 space-y-2">
+                <li><a href="#" data-page="dashboard" class="nav-link active block py-2 px-3 rounded text-primary bg-primary/10 font-medium">Dashboard</a></li>
+                <li><a href="#" data-page="animais" class="nav-link block py-2 px-3 rounded text-gray-600 hover:bg-gray-100 font-medium">Animais</a></li>
+                <li><a href="#" data-page="adotantes" class="nav-link block py-2 px-3 rounded text-gray-600 hover:bg-gray-100 font-medium">Adotantes</a></li>
+            </ul>
+        </div>
+        
+        <main class="flex-grow p-4 md:p-8 max-w-7xl w-full mx-auto">
+            <!-- Conteúdo do Dashboard (igual ao original) -->
+            <!-- ... mantenha todo o HTML do conteúdo principal ... -->
+        </main>
+
+        <footer class="text-center p-4 text-xs text-gray-500 border-t border-gray-200 mt-8">
+            <p>&copy; 2025 LAU MIAU. Todos os direitos reservados. Dashboard v1.0</p>
+        </footer>
+    </div>
+
+    <!-- JS externo -->
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
