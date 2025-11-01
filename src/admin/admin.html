@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAU MIAU - Login Admin</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="./css/admin.css">
+
+    <!-- Configuração do Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': 'var(--primary-color)',
+                        'accent': 'var(--accent-color)',
+                        'card': 'var(--card-color)',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <main id="login-card" class="w-full max-w-lg mx-auto">
+        <article class="bg-card p-8 md:p-10 shadow-2xl rounded-xl border border-gray-100 transition-all duration-300">
+            <header class="text-center mb-8">
+                <div class="flex flex-col items-center justify-center mb-4 text-primary">
+                    <span data-lucide="lock" class="w-12 h-12 text-primary"></span>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-700 mb-2">Área Administrativa</h1>
+                <h2 id="greeting-message" class="text-sm text-gray-500 max-w-xs mx-auto">
+                    Entre com suas credenciais para acessar o painel administrativo
+                </h2>
+            </header>
+
+            <form id="login-form" aria-labelledby="greeting-message">
+                <div class="mb-5">
+                    <label for="email-input" class="sr-only">Email</label>
+                    <div class="relative">
+                        <input type="email" id="email-input" name="email" placeholder="Seu Email" required
+                               class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition duration-150"
+                               aria-label="Campo para Email">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none icon-wrapper">
+                            <span data-lucide="mail" class="w-4 h-4 text-gray-400"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="password-input" class="sr-only">Senha</label>
+                    <div class="relative">
+                        <input type="password" id="password-input" name="senha" placeholder="Senha" required
+                               class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none transition duration-150"
+                               aria-label="Campo para Senha">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none icon-wrapper">
+                            <span data-lucide="key" class="w-4 h-4 text-gray-400"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="login-button"
+                        class="w-full bg-primary text-white font-bold py-3 rounded-lg shadow-md hover:bg-opacity-90 transition duration-150 ease-in-out transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                    Entrar
+                </button>
+            </form>
+
+            <footer class="mt-6 text-center text-sm space-y-2">
+                <a href="#" class="text-xs text-gray-400 hover:underline">Esqueceu a senha?</a>
+                <div class="pt-4 border-t border-gray-100 text-xs text-gray-400">
+                    Feito com 🧡 para o seu pet.
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <!-- JS externo -->
+    <script src="./js/admin.js"></script>
+</body>
+</html>
