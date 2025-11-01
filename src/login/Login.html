@@ -1,38 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Lau Miau</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAU MIAU - Login</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="../css/login.css">
+
+    <!-- Configuração Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': 'var(--primary-color)',
+                        'accent': 'var(--accent-color)',
+                        'card': 'var(--card-color)',
+                    },
+                }
+            }
+        }
+    </script>
 </head>
-<body class="text-gray-800 flex items-center justify-center min-h-screen bg-gray-100">
+<body>
 
-  <!-- Indicador de carregamento -->
-  <div id="loading-indicator" class="text-center text-lg">Carregando...</div>
+    <!-- Container do Card de Login -->
+    <div class="login-card mx-auto">
 
-  <!-- Cartão de login -->
-  <main id="login-card" class="hidden bg-white shadow-lg rounded-2xl p-8 w-80 text-center">
-    <article>
-      <header class="mb-6">
-        <span class="text-4xl">🐾</span>
-        <h1 class="text-2xl font-bold">LAU MIAU</h1>
-        <h2 id="greeting-message" class="text-gray-500">Vamos Começar!</h2>
-      </header>
+        <!-- Botão Voltar -->
+        <a href="#" id="back-button" class="absolute top-6 left-6 text-gray-500 hover:text-gray-700 transition duration-150" aria-label="Voltar">
+            <span data-lucide="arrow-left" class="w-6 h-6"></span>
+        </a>
 
-      <!-- Formulário -->
-      <form id="login-form" class="flex flex-col gap-4">
-        <input type="text" id="name-input" placeholder="Nome de Usuário ou apelido" class="border rounded p-2" />
-        <input type="password" id="password-input" placeholder="Senha" class="border rounded p-2" />
-        <button id="login-button" class="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">Entrar</button>
-      </form>
+        <!-- Logo e Título -->
+        <div class="mb-8">
+            <img src="https://placehold.co/100x40/FF7F4E/ffffff/png?text=LAU+MIAU" alt="LAU MIAU Logo" class="mx-auto mb-4" width="120">
+            <h1 class="text-2xl font-semibold text-gray-800">Vamos Começar!</h1>
+        </div>
 
-      <!-- Footer com opções sociais -->
-      <footer class="mt-6 text-sm text-gray-500">...</footer>
-    </article>
-  </main>
+        <!-- Formulário de Login -->
+        <form id="login-form" class="space-y-5">
+            
+            <!-- Campo Nome de Usuário ou Email -->
+            <div class="relative">
+                <span data-lucide="user" class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2"></span>
+                <input type="text" id="username-email" placeholder="Nome de Usuário ou Email"
+                       class="form-input pl-12" autocomplete="username">
+            </div>
 
-  <!-- Script JS do Firebase e manipulação do DOM -->
-  <script type="module" src="./login.js"></script>
+            <!-- Campo Senha -->
+            <div class="relative">
+                <span data-lucide="lock" class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2"></span>
+                <input type="password" id="password" placeholder="Senha"
+                       class="form-input pl-12" autocomplete="current-password">
+                <a href="#" class="text-xs text-primary hover:underline absolute right-4 top-1/2 transform -translate-y-1/2">Esqueceu a senha?</a>
+            </div>
+
+            <!-- Linha "ou" -->
+            <div class="flex items-center my-4">
+                <div class="flex-grow border-t border-gray-200"></div>
+                <span class="flex-shrink mx-4 text-gray-400 text-sm">ou</span>
+                <div class="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            <!-- Botões Sociais -->
+            <button type="button" class="social-button">
+                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google Logo" class="w-5 h-5">
+                Continuar como Google
+            </button>
+            <button type="button" class="social-button">
+                <img src="https://www.svgrepo.com/show/448220/facebook.svg" alt="Facebook Logo" class="w-5 h-5">
+                Continuar com Facebook
+            </button>
+
+            <!-- Botão Entrar -->
+            <button type="submit"
+                    class="w-full px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition duration-150 ease-in-out mt-6">
+                Entrar
+            </button>
+
+        </form>
+
+        <!-- Links de Rodapé -->
+        <div class="mt-8 text-sm text-gray-500">
+            <p>Ainda não tem conta? <a href="#" id="signup-link" class="text-primary font-semibold hover:underline">Cadastrar-se</a></p>
+            <div class="mt-4 flex justify-center space-x-6 text-xs">
+                <a href="#" class="hover:underline">Política de Privacidade</a>
+                <a href="#" class="hover:underline">Termos de Serviço</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script externo -->
+    <script src="../js/login.js"></script>
 </body>
 </html>
