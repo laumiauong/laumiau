@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAU MIAU - Perfil do Usuário</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="../css/perfil.css">
+
+    <!-- Configuração Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': 'var(--primary-color)',
+                        'accent': 'var(--accent-color)',
+                        'card': 'var(--card-color)',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Container Principal do Perfil -->
+    <div class="w-full max-w-5xl mx-auto bg-card rounded-xl shadow-2xl overflow-hidden">
+
+        <!-- Top Bar -->
+        <header class="p-4 md:p-6 bg-white border-b border-gray-100 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-500 hover:text-gray-700 transition duration-150" aria-label="Menu Lateral">
+                    <span data-lucide="menu" class="w-6 h-6"></span>
+                </a>
+                <h1 class="text-xl font-bold text-primary">LAU MIAU</h1>
+            </div>
+            
+            <!-- Barra de Busca/Avatar -->
+            <div class="flex items-center space-x-4">
+                <div class="hidden sm:block relative">
+                    <input type="text" placeholder="Pesquisa"
+                           class="border border-gray-300 rounded-full py-2 pl-4 pr-10 text-sm focus:border-primary focus:ring-1 focus:ring-primary transition">
+                    <span data-lucide="search" class="w-4 h-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></span>
+                </div>
+                <button class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:opacity-80 transition" aria-label="Notificações">
+                    <span data-lucide="bell" class="w-5 h-5"></span>
+                </button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+                    <img src="https://placehold.co/40x40/FF7F4E/ffffff?text=B" alt="Avatar do Usuário" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <div class="p-6 md:p-10">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-8">
+                Bem vinda, <span class="text-primary">Bruna!</span>
+            </h2>
+
+            <!-- Card de Dados do Perfil -->
+            <div class="data-card">
+                <div class="flex items-start justify-between mb-8 pb-4 border-b border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary flex-shrink-0">
+                            <img src="https://placehold.co/64x64/FF7F4E/ffffff?text=B" alt="Foto de Perfil" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Bruna D001</h3>
+                            <p class="text-sm text-gray-500">bruna2001@gmail.com</p>
+                        </div>
+                    </div>
+                    <button id="edit-profile-button"
+                            class="px-5 py-2 bg-primary text-white text-sm font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition duration-150">
+                        Editar Perfil
+                    </button>
+                </div>
+
+                <!-- Campos do Perfil -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                        <input type="text" value="Bruna Souza" readonly class="w-full rounded-lg p-3 read-only-field">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nome de Usuário</label>
+                        <input type="text" value="BrunaD001" readonly class="w-full rounded-lg p-3 read-only-field">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Animais Adotados</label>
+                        <input type="text" value="Pandora e 9" readonly class="w-full rounded-lg p-3 read-only-field">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Localização</label>
+                        <input type="text" value="Foz do Iguaçu, PR" readonly class="w-full rounded-lg p-3 read-only-field">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Idioma</label>
+                        <input type="text" value="Português" readonly class="w-full rounded-lg p-3 read-only-field">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Preferências</label>
+                        <input type="text" value="Gatos" readonly class="w-full rounded-lg p-3 read-only-field">
+                    </div>
+                </div>
+
+                <!-- Meus Animais -->
+                <div class="mt-10 pt-6 border-t border-gray-100">
+                    <h4 class="text-xl font-semibold text-gray-800 mb-4">Meus Animais</h4>
+
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg mb-3 border border-gray-100">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
+                            <span data-lucide="paw-print" class="w-5 h-5"></span>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-medium text-gray-800">Pandora</p>
+                            <p class="text-xs text-gray-500">Gato, Fêmea | 1 ano atrás</p>
+                        </div>
+                        <button class="text-primary hover:text-orange-700 transition text-sm font-medium">
+                            Ver Detalhes
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg mb-3 border border-gray-100">
+                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
+                            <span data-lucide="paw-print" class="w-5 h-5"></span>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-medium text-gray-800">Princesa</p>
+                            <p class="text-xs text-gray-500">Cachorro, Fêmea | 2 meses atrás</p>
+                        </div>
+                        <button class="text-primary hover:text-orange-700 transition text-sm font-medium">
+                            Ver Detalhes
+                        </button>
+                    </div>
+                    
+                    <button id="add-new-animal-profile"
+                            class="text-sm text-primary font-medium mt-2 hover:text-orange-700 transition flex items-center">
+                        <span data-lucide="plus" class="w-4 h-4 mr-1"></span>
+                        Adicionar novo animal (para adoção)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS externo -->
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
