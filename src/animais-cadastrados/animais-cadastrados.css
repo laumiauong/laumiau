@@ -1,0 +1,36 @@
+:root {
+    --primary-color: #FF7F4E;
+    --accent-color: #E4DFF3;
+    --card-color: #ffffff;
+    --text-color: #333333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* Estilo para input com foco */
+input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 1px var(--primary-color) !important;
+}
+
+/* Estilo dos cards */
+.animal-card {
+    background-color: var(--card-color);
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.animal-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
