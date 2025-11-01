@@ -1,0 +1,49 @@
+:root {
+    --primary-color: #FF7F4E;
+    --accent-color: #E4DFF3;
+    --card-color: #ffffff;
+    --text-color: #333333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* Input e Select com foco */
+input:focus, select:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 1px var(--primary-color) !important;
+}
+
+/* Área de Upload */
+.image-upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    border-radius: 1rem;
+    padding: 2rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    background-color: #f9f9f9;
+}
+.image-upload-area:hover {
+    border-color: var(--primary-color);
+    background-color: #fff4ef;
+}
+.image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    display: none;
+    object-fit: cover;
+}
