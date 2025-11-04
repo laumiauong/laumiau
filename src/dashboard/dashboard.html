@@ -23,7 +23,7 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': 'var(--primary-color)',
+                        'laranja': 'var(--laranja)',
                         'accent': 'var(--accent-color)',
                         'card': 'var(--card-color)',
                     },
@@ -37,19 +37,18 @@
         <!-- Header/Navegação Principal -->
         <header class="bg-card shadow-sm sticky top-0 z-10">
             <nav class="flex items-center justify-between p-4 max-w-7xl mx-auto">
-                <a href="#" class="flex items-center space-x-2 text-xl font-extrabold text-primary">
-                    <span class="text-3xl" role="img" aria-label="Pata de Gato e Cachorro">🐾</span>
-                    <span>LAU MIAU</span>
+                <a href="#" class="flex items-center space-x-2 text-xl font-extrabold text-laranja">
+                    <img class="logo" src="/public/img/logo.svg" alt="logo lau miau">
                 </a>
 
                 <ul id="admin-nav" class="hidden md:flex space-x-4">
-                    <li><a href="#" data-page="dashboard" class="nav-link active border-b-2 py-2 px-3 transition duration-150 font-medium border-primary text-primary">Dashboard</a></li>
+                    <li><a href="#" data-page="dashboard" class="nav-link active border-b-2 py-2 px-3 transition duration-150 font-medium border-laranja text-laranja">Dashboard</a></li>
                     <li><a href="#" data-page="animais" class="nav-link border-b-2 py-2 px-3 transition duration-150 font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700">Animais</a></li>
                     <li><a href="#" data-page="adotantes" class="nav-link border-b-2 py-2 px-3 transition duration-150 font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700">Adotantes</a></li>
                 </ul>
 
                 <div class="flex items-center space-x-4">
-                    <button class="flex items-center text-gray-500 hover:text-primary transition duration-150" aria-label="Sair">
+                    <button class="flex items-center text-gray-500 hover:text-laranja transition duration-150" aria-label="Sair">
                         <span data-lucide="log-out" class="w-5 h-5 mr-1"></span>
                         <span class="hidden sm:inline">Sair</span>
                     </button>

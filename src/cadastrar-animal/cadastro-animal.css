@@ -16,6 +16,12 @@ body {
     padding: 2rem 1rem;
 }
 
+
+
+.logo{
+    height: 2rem;
+
+}
 /* Input e Select com foco */
 input:focus, select:focus {
     border-color: var(--primary-color) !important;

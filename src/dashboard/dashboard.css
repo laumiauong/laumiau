@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #FF7F4E; 
+    --laranja:#ea580c;; 
     --accent-color: #E4DFF3;
-    --card-color: #ffffff;
+    --card: #ffedd5; /* brand-orange-100 */
     --text-color: #333333;
 }
 
@@ -11,9 +11,15 @@ body {
     color: var(--text-color);
 }
 
+
+.logo{
+    height: 2rem;
+
+}
+
 .nav-link.active {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
+    border-color: var(--laranja);
+    color: var(--laranja);
     background-color: rgba(255, 127, 78, 0.1);
 }
 
