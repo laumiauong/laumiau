@@ -16,6 +16,13 @@ body {
     padding: 1rem;
 }
 
+
+.logo{
+    height: 1rem;
+
+}
+
+
 /* Estilo base para inputs */
 .form-input {
     border: 1px solid #e0e0e0;
