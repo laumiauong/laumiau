@@ -16,6 +16,13 @@ body {
     padding: 2rem 1rem;
 }
 
+
+.logo{
+    height: 2rem;
+
+}
+
+
 .read-only-field {
     background-color: #f7f7f7;
     border: 1px solid #e0e0e0;
