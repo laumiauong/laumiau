@@ -3,104 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAU MIAU - Login</title>
+    <title>Lau Miau - Login</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonte Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Ícones Lucide -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    <!-- CSS externo -->
-    <link rel="stylesheet" href="login.css">
-
-    <!-- Configuração Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': 'var(--primary-color)',
-                        'accent': 'var(--accent-color)',
-                        'card': 'var(--card-color)',
-                    },
-                }
-            }
+    <style>
+        /* --- CSS RESET & BASE --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    </script>
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFF9F4; /* Cor de fundo creme */
+            color: #4A4A4A;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- LOGO E TÍTULOS --- */
+        h1.brand-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            /* Removemos as fontes de texto pois agora é imagem */
+        }
+
+        /* Adicionei isso para sua imagem não estourar a tela */
+        .logo {
+            max-width: 200px; /* Tamanho máximo sugerido */
+            width: 100%;
+            height: auto;
+            display: block; /* Garante que respeite o align center */
+        }
+
+        h2.page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* --- LAYOUT & FORMULÁRIO --- */
+        main {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* --- INPUTS --- */
+        .input-group {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+            pointer-events: none;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+            cursor: pointer;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem; /* Espaço para ícone esquerdo */
+            border: 1px solid #E5E7EB;
+            border-radius: 50px; /* Pill shape */
+            background-color: transparent;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #FF8C00;
+        }
+
+        input::placeholder {
+            color: #9CA3AF;
+        }
+
+        /* --- LINKS & TEXTOS AUXILIARES --- */
+        .forgot-password {
+            align-self: flex-end;
+            font-size: 0.8rem;
+            color: #6B7280;
+            text-decoration: none;
+            margin-top: -0.5rem;
+        }
+        .forgot-password:hover {
+            color: #FF8C00;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            margin: 0.5rem 0;
+        }
+
+        /* --- BOTÕES --- */
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.8rem;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-bottom: 0.8rem;
+        }
+
+        .btn-social:hover {
+            background-color: #F9FAFB;
+        }
+
+        .btn-social svg, .btn-social i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: #FF8C00;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(255, 140, 0, 0.2);
+            transition: transform 0.1s, box-shadow 0.2s;
+            margin-top: 1rem;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .btn-primary:hover {
+            background-color: #e67e00;
+            box-shadow: 0 6px 8px -1px rgba(255, 140, 0, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* --- TOGGLE LOGIN/CADASTRO --- */
+        .toggle-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .toggle-link {
+            color: #FF8C00;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #6B7280;
+        }
+
+        /* --- FEEDBACK MESSAGE --- */
+        #feedback-message {
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none; /* Hidden by default */
+        }
+        .msg-error {
+            background-color: #FEE2E2;
+            color: #DC2626;
+        }
+        .msg-success {
+            background-color: #DCFCE7;
+            color: #16A34A;
+        }
+
+        /* Animação */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Container do Card de Login -->
-    <div class="login-card mx-auto">
-
-        <!-- Botão Voltar -->
-        <a href="#" id="back-button" class="absolute top-6 left-6 text-gray-500 hover:text-gray-700 transition duration-150" aria-label="Voltar">
-            <img class="logo" src="/public/img/logo.svg" alt="logo lau miau">
-        </a>
-
-        <!-- Logo e Título -->
-        <div class="mb-8">
-            <h1 class="text-2xl font-semibold text-gray-800">Vamos Começar!</h1>
+    <main>
+        
+        <div style="text-align: center;">
+            <h1 class="brand-title">
+                <img class="logo" src="/public/img/logo.svg" alt="logo lau miau">
+            </h1>
         </div>
 
-        <!-- Formulário de Login -->
-        <form id="login-form" class="space-y-5">
+        <h2 id="page-title" class="page-title">Vamos Começar!</h2>
+
+        <form id="auth-form">
             
-            <!-- Campo Nome de Usuário ou Email -->
-            <div class="relative">
-                <span data-lucide="user" class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2"></span>
-                <input type="text" id="username-email" placeholder="Nome de Usuário ou Email"
-                       class="form-input pl-12" autocomplete="username">
+            <div id="feedback-message"></div>
+
+            <div class="input-group">
+                <i class="fa-regular fa-user input-icon"></i>
+                <input 
+                    type="text" 
+                    id="username" 
+                    placeholder="Nome de Usuário ou Email" 
+                    aria-label="Nome de Usuário ou Email"
+                    autocomplete="username" 
+                    required
+                >
             </div>
 
-            <!-- Campo Senha -->
-            <div class="relative">
-                <span data-lucide="lock" class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2"></span>
-                <input type="password" id="password" placeholder="Senha"
-                       class="form-input pl-12" autocomplete="current-password">
-                <a href="#" class="text-xs text-primary hover:underline absolute right-4 top-1/2 transform -translate-y-1/2">Esqueceu a senha?</a>
+            <div class="input-group">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Senha" 
+                    aria-label="Senha"
+                    autocomplete="current-password" 
+                    required
+                >
+                <i class="fa-regular fa-eye-slash toggle-password" id="toggle-password"></i>
             </div>
 
-            <!-- Linha "ou" -->
-            <div class="flex items-center my-4">
-                <div class="flex-grow border-t border-gray-200"></div>
-                <span class="flex-shrink mx-4 text-gray-400 text-sm">ou</span>
-                <div class="flex-grow border-t border-gray-200"></div>
-            </div>
+            <a href="#" id="forgot-password-link" class="forgot-password">esqueceu sua senha?</a>
 
-            <!-- Botões Sociais -->
-            <button type="button" class="social-button">
-                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google Logo" class="w-5 h-5">
-                Continuar como Google
+            <div class="divider">ou</div>
+
+            <button type="button" class="btn-social">
+                <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path>
+                    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path>
+                    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path>
+                    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path>
+                </svg>
+                Continuar com o Google
             </button>
-            <button type="button" class="social-button">
-                <img src="https://www.svgrepo.com/show/448220/facebook.svg" alt="Facebook Logo" class="w-5 h-5">
-                Continuar com Facebook
+            
+            <button type="button" class="btn-social">
+                <i class="fa-brands fa-apple" style="font-size: 1.4rem;"></i>
+                Continuar com a Apple
             </button>
 
-            <!-- Botão Entrar -->
-            <button type="submit"
-                    class="w-full px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90 transition duration-150 ease-in-out mt-6">
+            <button type="submit" id="submit-btn" class="btn-primary">
                 Entrar
             </button>
 
+            <div class="toggle-container">
+                <a href="#" id="toggle-mode" class="toggle-link">
+                    Cadastrar-se
+                </a>
+            </div>
         </form>
 
-        <!-- Links de Rodapé -->
-        <div class="mt-8 text-sm text-gray-500">
-            <p>Ainda não tem conta? <a href="#" id="signup-link" class="text-primary font-semibold hover:underline">Cadastrar-se</a></p>
-            <div class="mt-4 flex justify-center space-x-6 text-xs">
-                <a href="#" class="hover:underline">Política de Privacidade</a>
-                <a href="#" class="hover:underline">Termos de Serviço</a>
-            </div>
-        </div>
-    </div>
+        <footer>
+            <a href="#">Política de Privacidade</a>
+            <i class="fa-solid fa-paw" style="color: #FF8C00; font-size: 10px;"></i>
+            <a href="#">Termos de Serviço</a>
+        </footer>
 
-    <!-- Script externo -->
-    <script src="login.js"></script>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('auth-form');
+            const pageTitle = document.getElementById('page-title');
+            const submitBtn = document.getElementById('submit-btn');
+            const toggleModeBtn = document.getElementById('toggle-mode');
+            const forgotPasswordLink = document.getElementById('forgot-password-link');
+            const passwordInput = document.getElementById('password');
+            const togglePasswordIcon = document.getElementById('toggle-password');
+            const feedbackMessage = document.getElementById('feedback-message');
+            const usernameInput = document.getElementById('username');
+
+            let isLoginMode = true;
+
+            // Função de Feedback Visual
+            function showMessage(msg, type) {
+                feedbackMessage.textContent = msg;
+                feedbackMessage.className = ''; // Limpa classes antigas
+                feedbackMessage.style.display = 'block';
+                
+                if (type === 'success') {
+                    feedbackMessage.classList.add('msg-success');
+                } else {
+                    feedbackMessage.classList.add('msg-error');
+                }
+                
+                setTimeout(() => {
+                    feedbackMessage.style.display = 'none';
+                }, 3000);
+            }
+
+            // Toggle Senha
+            togglePasswordIcon.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                togglePasswordIcon.classList.toggle('fa-eye');
+                togglePasswordIcon.classList.toggle('fa-eye-slash');
+            });
+
+            // Alternar Login/Cadastro
+            toggleModeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                isLoginMode = !isLoginMode;
+
+                if (isLoginMode) {
+                    pageTitle.textContent = "Vamos Começar!";
+                    submitBtn.textContent = "Entrar";
+                    toggleModeBtn.textContent = "Cadastrar-se";
+                    forgotPasswordLink.style.display = "block";
+                    // Ajuda o navegador a saber que é login
+                    passwordInput.setAttribute('autocomplete', 'current-password');
+                } else {
+                    pageTitle.textContent = "Crie sua Conta";
+                    submitBtn.textContent = "Cadastrar";
+                    toggleModeBtn.textContent = "Já tenho uma conta";
+                    forgotPasswordLink.style.display = "none";
+                     // Ajuda o navegador a saber que é nova senha
+                     passwordInput.setAttribute('autocomplete', 'new-password');
+                }
+
+                form.reset();
+                feedbackMessage.style.display = 'none';
+            });
+
+            // Submit
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                if (!username || !password) {
+                    showMessage("Por favor, preencha todos os campos.", "error");
+                    return;
+                }
+
+                const storedUsers = JSON.parse(localStorage.getItem('lauMiauUsers')) || [];
+
+                if (isLoginMode) {
+                    const userFound = storedUsers.find(u => u.username === username && u.password === password);
+
+                    if (userFound) {
+                        showMessage(`Bem-vindo de volta, ${username}!`, "success");
+                        localStorage.setItem('currentUser', JSON.stringify(userFound));
+                        
+                        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Entrando...';
+                        
+                        // REDIRECIONAMENTO AQUI
+                        setTimeout(() => {
+                            // Altere "index.html" para o nome do seu arquivo principal
+                            window.location.href = "index.html"; 
+                        }, 2000);
+                        
+                    } else {
+                        showMessage("Usuário ou senha incorretos.", "error");
+                    }
+                } else {
+                    const userExists = storedUsers.some(u => u.username === username);
+
+                    if (userExists) {
+                        showMessage("Este usuário já está cadastrado.", "error");
+                    } else {
+                        const newUser = {
+                            id: Date.now(),
+                            username: username,
+                            password: password
+                        };
+
+                        storedUsers.push(newUser);
+                        localStorage.setItem('lauMiauUsers', JSON.stringify(storedUsers));
+
+                        showMessage("Conta criada! Faça login.", "success");
+                        setTimeout(() => {
+                            toggleModeBtn.click();
+                        }, 1500);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
