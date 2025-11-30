@@ -1,44 +1,18 @@
-:root {
-    --primary-color: #FF7F4E; /* Laranja do botão e destaque */
-    --accent-color: #E4DFF3;  /* Roxo claro do fundo */
-    --card-color: #ffffff;    /* Branco dos cards */
-    --text-color: #333333;
-}
+/* style.css */
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding: 2rem 1rem;
+    background-color: #FFFFFF; /* Fundo do Perfil é Branco */
+    color: #1F2937;
 }
 
-
-.logo{
-    height: 2rem;
-
+/* Quando o input está no modo EDITÁVEL */
+.profile-input.editable {
+    background-color: #FFFFFF;
+    border-color: #FF9900; /* Laranja da marca */
+    box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
 }
 
-
-.read-only-field {
-    background-color: #f7f7f7;
-    border: 1px solid #e0e0e0;
-    cursor: default;
-    user-select: none;
-    color: #555;
-    font-weight: 500;
-}
-
-.read-only-field:hover {
-    border-color: #d0d0d0;
-}
-
-.data-card {
-    background-color: var(--card-color);
-    border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    padding: 2.5rem;
+/* Remove o contorno padrão azul do navegador */
+input:focus {
+    outline: none;
 }

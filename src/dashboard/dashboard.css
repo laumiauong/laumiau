@@ -1,24 +1,27 @@
+/* style.css */
+
 body {
-    background-color: #FDF6F0;
+    background-color: #FFFBF5;
+    color: #1F2937;
 }
 
-/* Transições suaves */
-.card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+/* Sombra suave personalizada para os cards */
+.card-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+/* Animações para o Modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-    background: #FF9F1C;
-    border-radius: 4px;
+
+.modal-enter {
+    animation: fadeIn 0.3s ease-out;
 }

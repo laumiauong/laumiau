@@ -1,0 +1,232 @@
+/* --- CSS RESET & BASE --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FFF9F4; /* Cor de fundo creme */
+    color: #4A4A4A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- TIPOGRAFIA --- */
+h1.brand-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 3rem;
+    line-height: 1.1;
+    color: #FF8C00;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.paw-icon {
+    font-size: 1.8rem;
+    position: absolute;
+    top: 5px;
+    right: -25px;
+    transform: rotate(12deg);
+    color: #FF8C00;
+}
+
+h2.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* --- LAYOUT & FORMULÁRIO --- */
+main {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* --- INPUTS --- */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem 1rem 0.8rem 2.8rem; /* Espaço para ícone esquerdo */
+    border: 1px solid #E5E7EB;
+    border-radius: 50px; /* Pill shape */
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #FF8C00;
+}
+
+input::placeholder {
+    color: #9CA3AF;
+}
+
+/* --- LINKS & TEXTOS AUXILIARES --- */
+.forgot-password {
+    align-self: flex-end;
+    font-size: 0.8rem;
+    color: #6B7280;
+    text-decoration: none;
+    margin-top: -0.5rem;
+}
+.forgot-password:hover {
+    color: #FF8C00;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #9CA3AF;
+    margin: 0.5rem 0;
+}
+
+/* --- BOTÕES --- */
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.8rem;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 0.8rem;
+}
+
+.btn-social:hover {
+    background-color: #F9FAFB;
+}
+
+.btn-social svg, .btn-social i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.9rem;
+    background-color: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(255, 140, 0, 0.2);
+    transition: transform 0.1s, box-shadow 0.2s;
+    margin-top: 1rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: #e67e00;
+    box-shadow: 0 6px 8px -1px rgba(255, 140, 0, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* --- TOGGLE LOGIN/CADASTRO --- */
+.toggle-container {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.toggle-link {
+    color: #FF8C00;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.toggle-link:hover {
+    text-decoration: underline;
+}
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 0.75rem;
+    color: #9CA3AF;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+footer a:hover {
+    color: #6B7280;
+}
+
+/* --- FEEDBACK MESSAGE --- */
+#feedback-message {
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    display: none; /* Hidden by default */
+}
+.msg-error {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+.msg-success {
+    background-color: #DCFCE7;
+    color: #16A34
