@@ -42,7 +42,7 @@ function renderDashboard() {
 
     cards.forEach(stat => {
         statsContainer.innerHTML += `
-            <div class="bg-white p-6 rounded-3xl card-shadow border border-gray-100 flex flex-col justify-between h-32 relative hover:-translate-y-1 transition-transform duration-300">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between h-32 relative hover:-translate-y-1 transition-transform duration-300">
                 <div class="flex justify-between items-start">
                     <span class="text-gray-600 text-sm font-semibold">${stat.title}</span>
                     <i class="ph-fill ${stat.icon} ${stat.color} text-xl ${stat.badge ? 'animate-bounce' : ''}"></i>
@@ -83,73 +83,10 @@ function renderDashboard() {
     });
 }
 
-// --- CONTROLE DO MODAL ---
-function toggleModal(show) {
-    const modal = document.getElementById('petModal');
-    const panel = document.getElementById('modal-panel');
-    
-    if (show) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        setTimeout(() => {
-            modal.classList.remove('opacity-0');
-            panel.classList.remove('scale-95');
-            panel.classList.add('scale-100');
-        }, 10);
-        document.getElementById('petNameInput').focus();
-    } else {
-        modal.classList.add('opacity-0');
-        panel.classList.remove('scale-100');
-        panel.classList.add('scale-95');
-        setTimeout(() => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }, 300);
-    }
-}
-
-// --- LÓGICA DO FORMULÁRIO ---
-function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    const nameInput = document.getElementById('petNameInput');
-    const typeInput = document.getElementById('petTypeInput');
-    const name = nameInput.value.trim();
-
-    if (!name) return;
-
-    const data = loadData();
-    
-    data.stats.available++;
-    data.stats.new++;
-
-    data.activities.unshift({
-        text: `${typeInput.value} '${name}' cadastrado`,
-        time: "Agora mesmo",
-        type: "neutral"
-    });
-
-    if(data.activities.length > 5) data.activities.pop();
-
-    saveData(data);
-    
-    nameInput.value = '';
-    toggleModal(false);
-    renderDashboard();
-    console.log("Pet salvo com sucesso!");
-}
-
 function logout() {
     if(confirm("Sair do sistema Lau Miau?")) {
-        localStorage.removeItem(STORAGE_KEY);
-        document.body.innerHTML = `
-            <div class="h-screen flex items-center justify-center bg-orange-50 flex-col gap-4">
-                <i class="ph-duotone ph-spinner animate-spin text-4xl text-brand-orange"></i>
-                <p class="text-gray-500 font-nunito">Saindo com segurança...</p>
-            </div>`;
-        setTimeout(() => {
-            location.reload();
-        }, 1500);
+        // Redireciona para o login principal
+        window.location.href = '../login/index.html';
     }
 }
 
