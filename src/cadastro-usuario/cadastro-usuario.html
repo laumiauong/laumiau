@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lau Miau - Criar Conta</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="cadastro-usuario.css">
+</head>
+<body>
+
+    <div class="back-button-container">
+        <a href="../login/Login.html" class="btn-back" title="Voltar">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+    </div>
+
+    <main>
+        <div style="text-align: center; margin-bottom: 1rem;">
+             <img class="logo" src="/public/img/logo.svg" alt="logo lau miau" style="max-width: 200px;">
+        </div>
+        
+        <h2 class="page-title">Crie sua Conta</h2>
+
+        <form id="registerForm">
+            
+            <div class="input-group">
+                <i class="fa-regular fa-user input-icon"></i>
+                <input type="text" id="fullname" placeholder="Nome Completo" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-regular fa-envelope input-icon"></i>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-mobile-screen input-icon"></i>
+                <input type="tel" id="phone" placeholder="Telefone" maxlength="15" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="password" placeholder="Crie uma Senha" required>
+                <i class="fa-regular fa-eye-slash toggle-password" onclick="togglePass('password', this)"></i>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock input-icon"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirme sua Senha" required>
+                <i class="fa-regular fa-eye-slash toggle-password" onclick="togglePass('confirmPassword', this)"></i>
+            </div>
+
+            <div class="terms-container">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">Li e concordo com os <a href="#" class="link-highlight">Termos de Uso</a></label>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <footer>
+            <a href="#">Política de Privacidade</a>
+            <i class="fa-solid fa-paw" style="color: var(--primary-orange); font-size: 10px;"></i>
+            <a href="#">Termos de Serviço</a>
+        </footer>
+    </main>
+
+    <script src="cadastro-usuario.js" defer></script>
+
+</body>
+</html>
